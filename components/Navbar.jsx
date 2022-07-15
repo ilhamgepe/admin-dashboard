@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, TextField } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
@@ -11,6 +11,11 @@ import { useDarkMode } from "../src/store/darkModeStore";
 
 const Navbar = () => {
   const { darkMode, changeDarkMode } = useDarkMode();
+  const [dm, setDm] = useState(true);
+
+  useEffect(() => {
+    setDm(darkMode);
+  }, [darkMode]);
   return (
     <div className="navbar dark:bg-slate-900 dark:border-gray-600  text-sm text-gray-500 border-b-2 border-gray-200">
       <div className="wrapper h-14 flex items-center justify-between mx-5">
@@ -24,7 +29,7 @@ const Navbar = () => {
         </form>
         <div className="items flex items-center gap-4">
           <div
-            onClick={() => changeDarkMode(!darkMode)}
+            onClick={() => changeDarkMode(!dm)}
             className="item cursor-pointer flex items-center"
           >
             {darkMode ? (

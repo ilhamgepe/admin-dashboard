@@ -24,14 +24,14 @@ import { persist } from 'zustand/middleware'
 //         value: 'bg-rose-500'
 //     },
 // ]
-const useColorMode = create(
-    (set) => ({
-        colorMode: '',
-        changeColorMode: (status) => set(state => ({ colorMode: status }))
-    })
-)
+// const useColorMode = create(
+//     (set) => ({
+//         colorMode: '',
+//         changeColorMode: (status) => set(state => ({ colorMode: status }))
+//     })
+// )
 
 
-export {
-    useColorMode
-}
+// export {
+//     useColorMode
+// }

@@ -11,6 +11,7 @@ import StoreMallDirectoryIcon from "@mui/icons-material/StoreMallDirectory";
 import { color } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useColorMode } from "../src/store/colorMode";
+import { useDarkMode } from "../src/store/darkModeStore";
 import ToggleDarkMode from "./ToggleDarkMode";
 
 const Sidebar = () => {
