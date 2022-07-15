@@ -1,11 +1,15 @@
+import Head from "next/head";
+import Layouts from "../components/Layouts";
+import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import { useDarkMode } from "../src/store/darkModeStore";
 
 export default function Home() {
+
   return (
-    <div className="flex">
-      <Sidebar />
-      <div className="container  flex-1">container</div>
-    </div>
+    <Layouts>
+      <p>hello world</p>
+    </Layouts>
   );
 }
 2256;
