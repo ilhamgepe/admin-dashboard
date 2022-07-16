@@ -4,12 +4,13 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { useDarkMode } from "../src/store/darkModeStore";
+import useDarkMode from "../src/store/darkModeStore";
 import { useEffect, useState } from "react";
 
 export default function ToggleDarkMode() {
-  const { darkMode, changeDarkMode } = useDarkMode();
-  const [dm, setDm] = useState(true);
+  const [dm, setDm] = useState("");
+  const darkMode = useDarkMode((state) => state.darkMode);
+  const changeDarkMode = useDarkMode((state) => state.changeDarkMode);
 
   useEffect(() => {
     setDm(darkMode);
@@ -20,21 +21,21 @@ export default function ToggleDarkMode() {
       <ToggleButton
         className="dark:border-gray-400 rounded-tl-md rounded-bl-md"
         size="small"
-        value={true}
+        value={"dark"}
         aria-label="darkMode"
-        onClick={() => changeDarkMode(true)}
+        onClick={() => changeDarkMode("dark")}
       >
-        <DarkModeIcon className={`${dm ? "text-indigo-300" : ""}`} />
+        <DarkModeIcon className={`${dm == "dark" ? "text-indigo-300" : ""}`} />
       </ToggleButton>
       <ToggleButton
         className="dark:border-gray-400 rounded-tr-md rounded-br-md"
-        onClick={() => changeDarkMode(false)}
+        onClick={() => changeDarkMode("light")}
         size="small"
-        value={false}
-        aria-label="Light"
+        value={"light"}
+        aria-label="LightMode"
       >
         <LightModeIcon
-          className={`${!dm ? "text-yellow-300" : "text-slate-300"}`}
+          className={`${dm == "light" ? "text-yellow-300" : "text-slate-300"}`}
         />
       </ToggleButton>
     </ToggleButtonGroup>

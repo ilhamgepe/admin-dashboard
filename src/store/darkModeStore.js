@@ -1,19 +1,14 @@
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
+const darkModeStore = (set) => ({
+    darkMode: 'dark',
+    changeDarkMode: (mode) => set((state) => ({ darkMode: mode }))
+})
+
 const useDarkMode = create(
-    persist(
-        (set) => ({
-            darkMode: true,
-            changeDarkMode: (status) => set(state => ({ darkMode: status }))
-        }),
-        {
-            name: "darkmode"
-        }
-    )
+    persist(darkModeStore, { name: 'darkmode' })
 )
 
 
-export {
-    useDarkMode
-};
+export default useDarkMode

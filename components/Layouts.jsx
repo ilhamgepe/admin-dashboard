@@ -1,13 +1,18 @@
 import Head from "next/head";
-import React from "react";
-import { useDarkMode } from "../src/store/darkModeStore";
+import React, { useEffect, useState } from "react";
+import useDarkMode from "../src/store/darkModeStore";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
 const Layouts = ({ children }) => {
-  const { darkMode, changeDarkMode } = useDarkMode();
+  const [dm, setDm] = useState("");
+  const darkMode = useDarkMode((state) => state.darkMode);
+
+  useEffect(() => {
+    setDm(darkMode);
+  }, [darkMode]);
   return (
-    <div className={`flex ${darkMode && "dark"}`}>
+    <div className={`flex ${dm == "dark" && "dark"}`}>
       <Head>
         <title>Dashboard</title>
       </Head>

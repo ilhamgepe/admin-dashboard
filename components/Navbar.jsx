@@ -7,11 +7,12 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
-import { useDarkMode } from "../src/store/darkModeStore";
+import useDarkMode from "../src/store/darkModeStore";
 
 const Navbar = () => {
-  const { darkMode, changeDarkMode } = useDarkMode();
-  const [dm, setDm] = useState(true);
+  const [dm, setDm] = useState("");
+  const darkMode = useDarkMode((state) => state.darkMode);
+  const changeDarkMode = useDarkMode((state) => state.changeDarkMode);
 
   useEffect(() => {
     setDm(darkMode);
@@ -29,10 +30,10 @@ const Navbar = () => {
         </form>
         <div className="items flex items-center gap-4">
           <div
-            onClick={() => changeDarkMode(!dm)}
+            onClick={() => changeDarkMode("dark")}
             className="item cursor-pointer flex items-center"
           >
-            {darkMode ? (
+            {darkMode == "dark" ? (
               <>
                 <DarkModeIcon className="text-purple-700" />
                 <span>DarkMode</span>

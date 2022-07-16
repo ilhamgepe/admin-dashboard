@@ -12,4 +12,3 @@ export default function Home() {
     </Layouts>
   );
 }
-2256;
